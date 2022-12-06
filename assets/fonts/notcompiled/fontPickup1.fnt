@@ -1,0 +1,16 @@
+TEXTURE
+assets/textures/ascii/ascii.png
+assets/textures/ascii/ascii_960.png
+assets/textures/ascii/ascii_1280.png
+characters
+48 80 248 88 256
+49 88 248 96 256
+50 96 248 104 256
+51 104 248 112 256
+52 112 248 120 256
+53 120 248 128 256
+54 128 248 136 256
+55 136 248 144 256
+56 144 248 152 256
+57 152 248 160 256
+112 80 240 128 248

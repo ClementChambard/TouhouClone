@@ -1,0 +1,8 @@
+texture tex_ascii assets/textures/ascii/ascii.png assets/textures/ascii/ascii_960.png assets/textures/ascii/ascii_1280.png
+
+subfile assets/soundeffects.nsr
+
+subfile assets/spritefonts.nsr
+
+music mus_st01 assets/musics/TH16_02.wav
+music mus_st01bs assets/musics/TH16_03.wav

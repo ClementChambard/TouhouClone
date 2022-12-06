@@ -1,0 +1,8 @@
+spritefont fnt_base !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~£¬ tex_ascii 14 14 98 0 0 0
+spritefont fnt_small !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~£¬ tex_ascii 8 8 98 0 88 0
+spritefont fnt_score 0123456789/+-x%.+ABCDEFGHIJKLMNOPQRSTUVWXYZ tex_ascii 8 9 45 0 160 0
+spritefont fnt_bignumbers 0123456789/.sx, tex_ascii 16 16 17 0 144 -4
+spritefont2 fnt_score2 assets/fonts/fontScore.fnt
+spritefont2 fnt_pickup1 assets/fonts/fontPickup.fnt
+spritefont2 fnt_pickup2 assets/fonts/fontPickup1.fnt
+spritefont2 fnt_pickup3 assets/fonts/fontPickup2.fnt

@@ -1,0 +1,7 @@
+*.o
+vgcore.*
+
+__pycache__/
+
+build/
+tests/

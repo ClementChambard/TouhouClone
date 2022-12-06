@@ -1,0 +1,13 @@
+#version 400
+
+in vec3 texCoords;
+out vec4 fragmentColor;
+
+uniform samplerCube cubeMap;
+
+void main(void)
+{
+
+    fragmentColor = texture(cubeMap, texCoords);
+
+}

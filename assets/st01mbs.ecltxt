@@ -1,0 +1,184 @@
+
+void BossItemPhase(var A, var B, var C);
+
+void EffChargePoint3(var A, var B, var C, var D, var E, var F);
+
+void MBoss()
+{
+    setBoss(0);
+    MISS_COUNT = 0;
+    BOMB_COUNT = 0;
+    CAPTURE = 1;
+    enmKillAll();
+    timerReset();
+    enmCreate("Ecl_EtBreak_ni", 0.0f, 0.0f, 9999, 0, 0);
+    dropSeason(900, 200, 10);
+    seasonItemDamage(200);
+    anmSelect(1);
+    anmSetSprite(1, 107);
+    anmSelect(3);
+    anmSetMain(0, 0);
+    flagSet(76);
+    setHurtbox(48.0f, 48.0f);
+    setHitbox(40.0f, 40.0f);
+    lifeSet(5200);
+    lifeMarker(0, 5200.0f, -8355585);
+    setInterrupt(1, 0, 1020, "MBossDead");
+    setTimeout(1, "MBossEscape");
+    fog(128.0f, 16748431);
+    movePos(192.0f, -64.0f);
+    movePosTime(100, 4, 0.0f, 128.0f);
+    wait(40);
+    moveLimit(0.0f, 128.0f, 280.0f, 256.0f);
+    @MBoss1();
+    goto MBoss_800 @ 0;
+MBoss_780:
+    wait(1000);
+MBoss_800:
+    if 1 goto MBoss_780 @ 0;
+    delete();
+}
+
+void MBoss1()
+{
+    @EffChargePoint3(1.5707964f, 0.5235988f, 8, 5, 5, 7);
+    wait(80);
+    diffI($I0, 3, 4, 5, 6);
+    goto MBoss1_476 @ 0;
+MBoss1_200:
+    @MBoss1_at(1.3962634f, -0.29670596f) async;
+    wait(120:120:60);
+    moveRand(60, 4, 1.0f);
+    wait(120:120:60:60);
+MBoss1_476:
+    if 1 goto MBoss1_200 @ 0;
+    return;
+}
+
+void MBoss1_at(var A, var B)
+{
+    var C, D, E, F;
+    etNew(0);
+    etAim(0, 1);
+    etSprite(0, 8, 10);
+    etCount(0, 4:4:4:6, $I0);
+    etAngle(0, 1.5707964f, 0.6981317f);
+    etSpeed(0, 1.5f:2.5f:3.5f:4.1f, 1.0f);
+    etEx(0, 0, 2, 1, -999999, -999999.0f, -999999.0f);
+    etEx(0, 1, 1, -999999, -999999, -999999.0f, -999999.0f);
+    anmSelect(3);
+    anmSelectedPlay(0);
+    $E = 5;
+    goto MBoss1_at_688 @ 0;
+MBoss1_at_544:
+    etAngle(0, 1.5707964f, %A);
+    %A = %A + %B;
+    etOn(0);
+    wait(6);
+MBoss1_at_688:
+    if $E-- goto MBoss1_at_544 @ 0;
+    wait(80);
+    etNew(1);
+    etAim(1, 1);
+    etSprite(1, 4:4:18:32, 10:10:5:2);
+    etCount(1, 1, 1);
+    etAngle(1, 1.5707964f, 0.6981317f);
+    etSpeed(1, 1.5f:1.5f:2.5f:4.1f, 1.0f);
+    etEx(1, 0, 2, 1, -999999, -999999.0f, -999999.0f);
+    etEx(1, 1, 1, -999999, -999999, -999999.0f, -999999.0f);
+    diffI($F, 5, 5, 6, 6);
+    goto MBoss1_at_1336 @ 0;
+MBoss1_at_1296:
+!NHL
+    etOn(1);
+!*
+    wait(6);
+MBoss1_at_1336:
+    if $F-- goto MBoss1_at_1296 @ 0;
+    return;
+}
+
+void MBoss1_at2()
+{
+    var A, B, C;
+    wait(300:300:200:150);
+    etNew(1);
+    etAim(1, 3);
+    etSprite(1, 20, 3);
+    etCount(1, 1, 1:3:6:3);
+    etAngle(1, 0.0f, 0.034906585f);
+    etSpeed(1, 1:1:3:1, 0.8f);
+    etEx(1, 0, 2, 1, -999999, -999999.0f, -999999.0f);
+    $C = 600;
+    goto MBoss1_at2_800 @ 0;
+MBoss1_at2_560:
+    etAngle(1, [-9989);
+    etOn(1);
+    wait(160:160:160:80);
+MBoss1_at2_800:
+    if $C-- goto MBoss1_at2_560 @ 0;
+    return;
+}
+
+void MBossDead()
+{
+    spellEnd();
+    enmKillAll();
+    unless (DIFF <= 1) goto MBossDead_384 @ 0;
+    unless (TIMEOUT == 0) goto MBossDead_304 @ 0;
+    enmCreate("Ecl_EtBreak", 0.0f, 0.0f, 9999, 0, 0);
+    goto MBossDead_360 @ 0;
+MBossDead_304:
+    enmCreate("Ecl_EtBreak_ni", 0.0f, 0.0f, 9999, 0, 0);
+MBossDead_360:
+    goto MBossDead_528 @ 0;
+MBossDead_384:
+    unless (TIMEOUT == 0) goto MBossDead_508 @ 0;
+    etCancel(640.0f);
+    goto MBossDead_528 @ 0;
+MBossDead_508:
+    etClear(640.0f);
+MBossDead_528:
+    anmPlay(1, 65);
+    moveLimitReset();
+    lifeSet(100000);
+    @BossItemPhase(20:20:20:30, 10, 48.0f);
+    unknown570();
+    flagSet(3);
+    setScreenShake(30, 12, 0);
+    anmPlay(0, 28);
+    playSound(5);
+    wait(60);
+    setChapter(2);
+    wait(60);
+    setBoss(-1);
+    flagSet(16);
+    movePosTime(60, 4, 192.0f, -32.0f);
+    wait(60);
+    delete();
+    delete();
+}
+
+void MBossEscape()
+{
+    setInterrupt(0, -1, 0, "");
+    setInterrupt(1, -1, 0, "");
+    spellEnd();
+    moveLimitReset();
+    enmKillAll();
+    unless (TIMEOUT == 0) goto MBossEscape_280 @ 0;
+    etCancel(640.0f);
+    goto MBossEscape_300 @ 0;
+MBossEscape_280:
+    etClear(640.0f);
+MBossEscape_300:
+    lifeSet(100000);
+    setChapter(2);
+    flagSet(16);
+    movePosTime(60, 4, 0.0f, -32.0f);
+    wait(10);
+    setBoss(-1);
+    wait(50);
+    delete();
+    delete();
+}

@@ -1,0 +1,2 @@
+#define TouhouNS_VERSION_MAJOR @TouhouNS_VERSION_MAJOR@
+#define TouhouNS_VERSION_MINOR @TouhouNS_VERSION_MINOR@
