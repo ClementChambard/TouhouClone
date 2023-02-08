@@ -162,7 +162,7 @@ void FpsText()
         //FPSTEXT->set_align(NSEngine::fa_right,NSEngine::fa_bottom);
         //FPSTEXT->set_pos(318,-238);
     }
-    float fps = NSEngine::engineData::fps->GetFPS();
+    //float fps = NSEngine::engineData::fps->GetFPS();
     //FPSTEXT->set_text(to_string_with_precision(fps,1) + "fps");
 }
 void EtamaText()

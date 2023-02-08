@@ -11,30 +11,6 @@
 #include "CollisionManager.h"
 #include "Timer.h"
 
-inline void SETUPGAME(int difficulty, int player = -1) //character ...
-{
-    static int p = 0;
-    if (player != -1) p = player;
-    Stg01::Init(difficulty);
-    PlayerEntity::GetInstance(p);
-}
-
-inline void LOOPGAME()
-{
-    if (Inputs::Keyboard().Pressed(NSK_escape)) PauseMenu::Open(0);
-    PauseMenu::Update();       
-    if (!(NSEngine::engineData::gameflags&0b10000000))
-    {
-        PlayerEntity::GetInstance()->Update();
-        Pickup::Update();
-        cdbg::Update();
-        BulletManager::Update();
-        CollisionManager::Update();
-        Stg01::Update();
-        Timer::Update();
-    }
-}
-
 inline void ENDGAME()
 {
     PlayerEntity::DestroyInstance();

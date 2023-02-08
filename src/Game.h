@@ -5,24 +5,21 @@
 #include <math.h>
 
 #define HAS_TEXT_ANM
-#include <NSEngine.h>
+#include <Engine.hpp>
 
-class Game {
+class Game : public NSEngine::IEngine {
 
 public:
-
     Game();
-    ~Game();
+    ~Game() override {}
 
-    void INIT();
-    void GAMELOOP();
-    void CLEAN();
-    
-    static int d;
-    static bool menu;
+    void on_create() override;
+    void on_update() override;
+    void on_render() override;
+    void on_destroy() override;
 
 private:
-    NSEngine::Window window;
+    int d;
 
 };
 

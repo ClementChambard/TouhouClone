@@ -49,13 +49,13 @@ namespace NSEngine {
         glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.f), rot, {0.f, 0.f, 1.f});
 
         glm::vec3 tl1 = glm::vec3(-xs*sd->w/2, -ys*sd->h/2, 0.f);
-        glm::vec4 rotatedTL = glm::vec4(tl1,1.f) * rotationMatrix;
+        glm::vec4 rotatedTL = glm::vec4(tl1,1.f) * rotationMatrix + glm::vec4(x,y,0,0);
         glm::vec3 tr1 = glm::vec3(xs*sd->w/2, -ys*sd->h/2, 0.f);
-        glm::vec4 rotatedTR = glm::vec4(tr1,1.f) * rotationMatrix;
+        glm::vec4 rotatedTR = glm::vec4(tr1,1.f) * rotationMatrix + glm::vec4(x,y,0,0);
         glm::vec3 br1 = glm::vec3(xs*sd->w/2, ys*sd->h/2, 0.f);
-        glm::vec4 rotatedBR = glm::vec4(br1,1.f) * rotationMatrix;
+        glm::vec4 rotatedBR = glm::vec4(br1,1.f) * rotationMatrix + glm::vec4(x,y,0,0);
         glm::vec3 bl1 = glm::vec3(-xs*sd->w/2, ys*sd->h/2, 0.f);
-        glm::vec4 rotatedBL = glm::vec4(bl1,1.f) * rotationMatrix;
+        glm::vec4 rotatedBL = glm::vec4(bl1,1.f) * rotationMatrix + glm::vec4(x,y,0,0);
 
         Vertex TL = {rotatedTL, ctl, {sd->u1, sd->v2}};
         Vertex TR = {rotatedTR, ctr, {sd->u2, sd->v2}};

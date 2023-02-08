@@ -1,6 +1,7 @@
 #include "PauseMenu.h"
 #include "AnmFront.h"
 #include <NSEngine.h>
+#include <Engine.hpp>
 #include "GameInputs.h"
 #include "GAMELOOP.h"
 
@@ -31,14 +32,14 @@ void PauseMenu::Open(int i)
     {
         case 0:
             options.emplace_back(0,0,[](){PauseMenu::Close();},true);
-            options.emplace_back(1,-33,[](){PauseMenu::Close();ENDGAME();Game::menu=true;},false,true);
+            options.emplace_back(1,-33,[](){PauseMenu::Close();ENDGAME();NSEngine::getInstance()->flags().val |= 0b01000000;},false,true);
             options.emplace_back(2,-66,[](){PauseMenu::Close();},false,true);
             options.emplace_back(3,-99,[](){PauseMenu::Close();},false);
-            options.emplace_back(4,-132,[](){PauseMenu::Close();ENDGAME();SETUPGAME(Game::d);},false,true);
+            options.emplace_back(4,-132,[](){PauseMenu::Close();ENDGAME();Stg01::Init(0);PlayerEntity::GetInstance(0);},false,true);
             break;
         case 1:
             AnmManager::anim(anmtitle)->offset_sprite(1);
-            options.emplace_back(1,-33,[](){PauseMenu::Close();ENDGAME();Game::menu=true;},true);
+            options.emplace_back(1,-33,[](){PauseMenu::Close();ENDGAME();NSEngine::getInstance()->flags().val |= 0b01000000;},true);
     }
 }
 
