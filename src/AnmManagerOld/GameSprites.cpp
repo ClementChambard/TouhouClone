@@ -41,7 +41,7 @@ sprite_data* sprite(unsigned int i)
 #include <NSEngine.h>
 namespace NSEngine {
 
-    void batch_draw_game_sprite(SpriteBatch* batch, int sprite_index, int x, int y, float xs, float ys, float rot, Color ctl, Color ctr, Color cbr, Color cbl)
+    void batch_draw_game_sprite(SpriteBatch* batch, int sprite_index, float x, float y, float xs, float ys, float rot, Color ctl, Color ctr, Color cbr, Color cbl)
     {
 
         sprite_data* sd = &(GS_ sprs[sprite_index]);
@@ -61,9 +61,10 @@ namespace NSEngine {
         Vertex TR = {rotatedTR, ctr, {sd->u2, sd->v2}};
         Vertex BR = {rotatedBR, cbr, {sd->u2, sd->v1}};
         Vertex BL = {rotatedBL, cbl, {sd->u1, sd->v1}};
+
         batch->draw(sd->tex_id, TL, TR, BR, BL, 0);
     }
-    void draw_game_sprite(int sprite_index, int x, int y, float xs, float ys, float rot, Color ctl, Color ctr, Color cbr, Color cbl)
+    void draw_game_sprite(int sprite_index, float x, float y, float xs, float ys, float rot, Color ctl, Color ctr, Color cbr, Color cbl)
     { batch_draw_game_sprite(&engineData::layers[engineData::targetLayer], sprite_index, x, y, xs, ys, rot, ctl, ctr, cbr, cbl); }
 
 }

@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <math/math.h>
 #include <math/Random.h>
+#include "AnmManagerOld/AnmManager.h"
 #include "Pickup.h"
 #include "PlayerEntity.h"
 #include "cdbg.h"
@@ -34,7 +35,6 @@ void Game::INIT()
     window.addDisplayMode({1280, 960, 0});
     window.setDisplayMode(2);
 
-    NSEngine::Subsystems();
     AnmInitAll();
     NSEngine::setMaxFps(60);
     NSEngine::createCamera(NS_CAM_3D, windowWidth, windowHeight);
@@ -69,10 +69,8 @@ void Game::GAMELOOP()
 
         NSEngine::StartFrame();
 
-        NSEngine::StartUpdate();
         if (Inputs::Keyboard().Pressed(NSK_f10)) window.nextDisplaymode();
         if (NSEngine::IsFBF() && !Inputs::Keyboard().Pressed(NSK_backspace) && !Inputs::Keyboard().Down(NSK_equals)) continue;
-        NSEngine::UpdateEngine();
 
         if(menu)
         {
@@ -93,10 +91,11 @@ void Game::GAMELOOP()
         }
         else
             LOOPGAME();
+        AnmManager::Update(1, NSEngine::engineData::gameflags & 0b10000000);
         NSEngine::EndUpdate();
 
-        //ren->initFrame();
-        window.InitDrawing();
+        ren->initFrame();
+        window.InitDrawing(true);
         if (menu)
         {
             NSEngine::draw_set_layer(NSEngine::engineData::debugLayer);
@@ -106,7 +105,7 @@ void Game::GAMELOOP()
             //NSEngine::SpriteManager::draw_text(gameassets::fnt_base,"HARD",{0,-60},{2,2},d==2?coly:colw);
             //NSEngine::SpriteManager::draw_text(gameassets::fnt_base,"LUNATIC",{0,-180},{2,2},d==3?coly:colw);
         }
-        NSEngine::RenderEngine();
+        AnmManager::Draw();
         if (NSEngine::engineData::gameflags & 0b00000010)
             CollisionManager::DEBUG_DRAW_BOXES();
         //ren->renderLayers();

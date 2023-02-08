@@ -36,36 +36,36 @@ int GameLayers::L30;
 
 void GameLayers::Init(NSEngine::LayerRenderer* la)
 {
-    L1 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES);
-    L2 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, true);
-    L3 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L4 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L5 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L6 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L7 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L8 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L9 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L10 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L11 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L12 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L13 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L14 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L15 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L16 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L17 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L18 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L19 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L20 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L21 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L22 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L23 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L24 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L25 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L26 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L27 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L28 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L29 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
-    L30 = NSEngine::addGameLayer(NSEngine::GLT_SPRITES, false, true);
+    L1 = NSEngine::addGameLayer();
+    L2 = NSEngine::addGameLayer(true);
+    L3 = NSEngine::addGameLayer(false, true);
+    L4 = NSEngine::addGameLayer(false, true);
+    L5 = NSEngine::addGameLayer(false, true);
+    L6 = NSEngine::addGameLayer(false, true);
+    L7 = NSEngine::addGameLayer(false, true);
+    L8 = NSEngine::addGameLayer(false, true);
+    L9 = NSEngine::addGameLayer(false, true);
+    L10 = NSEngine::addGameLayer(false, true);
+    L11 = NSEngine::addGameLayer(false, true);
+    L12 = NSEngine::addGameLayer(false, true);
+    L13 = NSEngine::addGameLayer(false, true);
+    L14 = NSEngine::addGameLayer(false, true);
+    L15 = NSEngine::addGameLayer(false, true);
+    L16 = NSEngine::addGameLayer(false, true);
+    L17 = NSEngine::addGameLayer(false, true);
+    L18 = NSEngine::addGameLayer(false, true);
+    L19 = NSEngine::addGameLayer(false, true);
+    L20 = NSEngine::addGameLayer(false, true);
+    L21 = NSEngine::addGameLayer(false, true);
+    L22 = NSEngine::addGameLayer(false, true);
+    L23 = NSEngine::addGameLayer(false, true);
+    L24 = NSEngine::addGameLayer(false, true);
+    L25 = NSEngine::addGameLayer(false, true);
+    L26 = NSEngine::addGameLayer(false, true);
+    L27 = NSEngine::addGameLayer(false, true);
+    L28 = NSEngine::addGameLayer(false, true);
+    L29 = NSEngine::addGameLayer(false, true);
+    L30 = NSEngine::addGameLayer(false, true);
     
     for (auto l : NSEngine::engineData::layers) la->addLayer(&l);
     la->setRenderFunction(Render);
@@ -92,7 +92,7 @@ void GameLayers::Render(NSEngine::LayerRenderer* w)
             glm::vec4 col = {0,0,0,0};
             if (NSEngine::engineData::cam3d!=nullptr && !l->is_static) col = NSEngine::engineData::cam3d->getFog(mi,ma);
             w->getShader()->SetFog(mi, ma, col);
-            l->renderBatch(l->depthTest);
+            l->renderBatch();
         }
 
         NSEngine::engineData::NSWindow->BindAsRenderTarget();
@@ -113,7 +113,7 @@ void GameLayers::Render(NSEngine::LayerRenderer* w)
     drawbatch->end();
     w->getShader()->SetProjectionMatrix(NSEngine::activeCamera3D()->getProjection(true));
     w->getShader()->SetViewMatrix(NSEngine::activeCamera3D()->getView(true));
-    drawbatch->renderBatch(false,true);
+    drawbatch->renderBatch();
     if (NSEngine::engineData::gameflags&0b00000100)
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         for (unsigned int i = GL_ L24; i < NSEngine::engineData::layers.size(); i++)
@@ -126,7 +126,7 @@ void GameLayers::Render(NSEngine::LayerRenderer* w)
             glm::vec4 col = {0,0,0,0};
             if (NSEngine::engineData::cam3d!=nullptr && !l->is_static) col = NSEngine::engineData::cam3d->getFog(mi,ma);
             w->getShader()->SetFog(mi, ma, col);
-            l->renderBatch(l->depthTest);
+            l->renderBatch();
         }
 }
 
@@ -143,13 +143,13 @@ void GameLayers::Render(NSEngine::Window* w)
         {
             NSEngine::SpriteBatch* l = &NSEngine::engineData::layers[i];
             l->end();
-            w->baseShader->SetProjectionMatrix(NSEngine::activeCamera3D()->getProjection(l->is_static));
-            w->baseShader->SetViewMatrix(NSEngine::activeCamera3D()->getView(l->is_static));
+            w->getBaseShader()->SetProjectionMatrix(NSEngine::activeCamera3D()->getProjection(l->is_static));
+            w->getBaseShader()->SetViewMatrix(NSEngine::activeCamera3D()->getView(l->is_static));
             float mi=1000000.f, ma=1000000.f;
             glm::vec4 col = {0,0,0,0};
             if (NSEngine::engineData::cam3d!=nullptr && !l->is_static) col = NSEngine::engineData::cam3d->getFog(mi,ma);
-            w->baseShader->SetFog(mi, ma, col);
-            l->renderBatch(l->depthTest);
+            w->getBaseShader()->SetFog(mi, ma, col);
+            l->renderBatch();
         }
 
         w->BindAsRenderTarget();
@@ -168,21 +168,21 @@ void GameLayers::Render(NSEngine::Window* w)
         NSEngine::draw_set_color({255,255,255,255});
     }
     drawbatch->end();
-    w->baseShader->SetProjectionMatrix(NSEngine::activeCamera3D()->getProjection(true));
-    w->baseShader->SetViewMatrix(NSEngine::activeCamera3D()->getView(true));
-    drawbatch->renderBatch(false,true);
+    w->getBaseShader()->SetProjectionMatrix(NSEngine::activeCamera3D()->getProjection(true));
+    w->getBaseShader()->SetViewMatrix(NSEngine::activeCamera3D()->getView(true));
+    drawbatch->renderBatch();
     if (NSEngine::engineData::gameflags&0b00000100)
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         for (unsigned int i = GL_ L24; i < NSEngine::engineData::layers.size(); i++)
         {
             NSEngine::SpriteBatch* l = &NSEngine::engineData::layers[i];
             l->end();
-            w->baseShader->SetProjectionMatrix(NSEngine::activeCamera3D()->getProjection(l->is_static));
-            w->baseShader->SetViewMatrix(NSEngine::activeCamera3D()->getView(l->is_static));
+            w->getBaseShader()->SetProjectionMatrix(NSEngine::activeCamera3D()->getProjection(l->is_static));
+            w->getBaseShader()->SetViewMatrix(NSEngine::activeCamera3D()->getView(l->is_static));
             float mi=1000000.f, ma=1000000.f;
             glm::vec4 col = {0,0,0,0};
             if (NSEngine::engineData::cam3d!=nullptr && !l->is_static) col = NSEngine::engineData::cam3d->getFog(mi,ma);
-            w->baseShader->SetFog(mi, ma, col);
-            l->renderBatch(l->depthTest);
+            w->getBaseShader()->SetFog(mi, ma, col);
+            l->renderBatch();
         }
 }
