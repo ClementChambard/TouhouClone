@@ -1,7 +1,7 @@
 #ifndef PLAYERHUD
 #define PLAYERHUD
 
-#include "AnmFront.h"
+#include "AnmManagerOld/AnmManager.h"
 
 class PlayerHUD {
     public:

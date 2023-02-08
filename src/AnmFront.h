@@ -1,7 +1,7 @@
 #ifndef ANMFRONT
 #define ANMFRONT
 
-#include <AnmManager.h>
+#include "AnmManagerOld/AnmManager.h"
 
 class AnmFront {
     public: static void Init();

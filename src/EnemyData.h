@@ -3,7 +3,7 @@
 
 #include <math/math.h>
 #include "THAnim.h"
-#include <Assets.h>
+//#include <Assets.h>
 #include "CollisionManager.h"
 #include <math/Random.h>
 #include <glm/glm.hpp>
@@ -34,7 +34,7 @@ struct EnemyData {
     int score = 1000;
     char dieAnim = 0b00000001;
 
-    int hitsound = gameassets::se_damage00;
+    int hitsound = 0;//gameassets::se_damage00;
     char hitsoundframe = 0;
     bool spell = false;
     bool mirror = false;

@@ -8,7 +8,7 @@
 #include "Stg01.h"
 #include "BulletManager.h"
 #include "Timer.h"
-#include <Profiler.h>
+//#include <Profiler.h>
 #include "CollisionManager.h"
 #include "GAMELOOP.h"
 #include "GameInputs.h"
@@ -46,7 +46,7 @@ void Game::INIT()
     CollisionManager::Init();
 
     NSEngine::EndInit();
-    ren->addLayer(NSEngine::engineData::layers[NSEngine::engineData::debugLayer]);
+    ren->addLayer(&NSEngine::engineData::layers[NSEngine::engineData::debugLayer]);
 }
 
 int Game::d;
@@ -61,8 +61,8 @@ void Game::GAMELOOP()
     int p = 0;
     NSEngine::Color coly = {255,255,0,255};
     NSEngine::Color colw = {255,255,255,255};
-    NSEngine::draw_set_halign(NSEngine::fa_center);
-    NSEngine::draw_set_valign(NSEngine::fa_center);
+    //NSEngine::draw_set_halign(NSEngine::fa_center);
+    //NSEngine::draw_set_valign(NSEngine::fa_center);
     while(NSEngine::IsRunning())
     {
 
@@ -78,7 +78,7 @@ void Game::GAMELOOP()
         {
             int dnow = d + (KEYPRESSED(K_DOWN)-KEYPRESSED(K_UP));
             if (dnow > 3) dnow = 3; if (dnow < 0) dnow = 0;
-            if (dnow != d) NSEngine::AudioEngine::PlaySound(gameassets::se_select00);
+            //if (dnow != d) NSEngine::AudioEngine::PlaySound(gameassets::se_select00);
             d = dnow;
             if (Inputs::Keyboard().Pressed(NSK_0)) p = 0;
             if (Inputs::Keyboard().Pressed(NSK_1)) p = 1;
@@ -88,7 +88,7 @@ void Game::GAMELOOP()
             {
                 menu = false;
                 SETUPGAME(d,p);
-                NSEngine::AudioEngine::PlaySound(gameassets::se_ok00);
+                //NSEngine::AudioEngine::PlaySound(gameassets::se_ok00);
             }
         }
         else
@@ -100,11 +100,11 @@ void Game::GAMELOOP()
         if (menu)
         {
             NSEngine::draw_set_layer(NSEngine::engineData::debugLayer);
-            NSEngine::SpriteManager::draw_text(gameassets::fnt_base,("Player"+std::to_string(p)).c_str(),{0,220},{1,1},{64,96,255,255});
-            NSEngine::SpriteManager::draw_text(gameassets::fnt_base,"EASY",{0,180},{2,2},d==0?coly:colw);
-            NSEngine::SpriteManager::draw_text(gameassets::fnt_base,"NORMAL",{0,60},{2,2},d==1?coly:colw);
-            NSEngine::SpriteManager::draw_text(gameassets::fnt_base,"HARD",{0,-60},{2,2},d==2?coly:colw);
-            NSEngine::SpriteManager::draw_text(gameassets::fnt_base,"LUNATIC",{0,-180},{2,2},d==3?coly:colw);
+            //NSEngine::SpriteManager::draw_text(gameassets::fnt_base,("Player"+std::to_string(p)).c_str(),{0,220},{1,1},{64,96,255,255});
+            //NSEngine::SpriteManager::draw_text(gameassets::fnt_base,"EASY",{0,180},{2,2},d==0?coly:colw);
+            //NSEngine::SpriteManager::draw_text(gameassets::fnt_base,"NORMAL",{0,60},{2,2},d==1?coly:colw);
+            //NSEngine::SpriteManager::draw_text(gameassets::fnt_base,"HARD",{0,-60},{2,2},d==2?coly:colw);
+            //NSEngine::SpriteManager::draw_text(gameassets::fnt_base,"LUNATIC",{0,-180},{2,2},d==3?coly:colw);
         }
         NSEngine::RenderEngine();
         if (NSEngine::engineData::gameflags & 0b00000010)
@@ -123,6 +123,7 @@ void Game::CLEAN()
     Pickup::Cleanup();
     CollisionManager::Cleanup();
     AsciiManager::Cleanup();
+    AnmManager::Cleanup();
     window.destroy();
     NSEngine::Quit();
 }

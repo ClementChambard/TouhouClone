@@ -25,7 +25,7 @@ void ShooterManager::Init(PlayerData* player, int& powerm, int& powers, float& h
 {
     ShooterManager::player = player;
     std::string shtfile = player->shtfile();
-    src_bulletsnd = NSEngine::AudioEngine::CreateSource();
+    //src_bulletsnd = NSEngine::AudioEngine::CreateSource();
     pbscr::Init();
     bulletcount = 500;
     bullets = new Bullet[bulletcount];
@@ -157,7 +157,7 @@ void ShooterManager::Update(bool shooting, bool focus, float framespeed)
         {
             AnmManager::UpdateChild(options[i].anm1,options[i].x+p->xp[2],options[i].y+p->yp[2],0,0,0,0,1,1,true);
             if (options[i].anm2 != -1)
-            AnmManager::UpdateChild(options[i].anm2,options[i].x+p->xp[2],options[i].y+p->yp[2],0,0,0,0,1,1,true);
+                AnmManager::UpdateChild(options[i].anm2,options[i].x+p->xp[2],options[i].y+p->yp[2],0,0,0,0,1,1,true);
             if (!options[i].isDrawn)
             {
                 options[i].isDrawn = true;
@@ -212,7 +212,7 @@ void ShooterManager::Update(bool shooting, bool focus, float framespeed)
             bullets[current_pos].anm = AnmManager::newAnim(player->BulletAnm(shooters[i].anm));
             bullets[current_pos].box = CollisionManager::NewPlayerHitbox(bullets[current_pos].x,bullets[current_pos].y,8,shooters[i].dmg);
             pbscr::scrinit[shooters[i].func_on_init](&(bullets[current_pos]));
-            if (shooters[i].sfx_id != -1) NSEngine::AudioEngine::PlaySoundAtSource(src_bulletsnd, pbscr::sounds[shooters[i].sfx_id]);
+            //if (shooters[i].sfx_id != -1) NSEngine::AudioEngine::PlaySoundAtSource(src_bulletsnd, pbscr::sounds[shooters[i].sfx_id]);
             AnmManager::UpdateChild(bullets[current_pos].anm,bullets[current_pos].x,bullets[current_pos].y,0,0,0,bullets[current_pos].direction,1,1,true);
             current_pos = (current_pos+1)%bulletcount;
         }

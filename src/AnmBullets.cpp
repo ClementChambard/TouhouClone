@@ -2652,28 +2652,28 @@ void effectEtamaBreakP2(AnimScript* anm)
 void effectEtamaBreak(float x, float y, float s, int r, int g, int b, int n, float speed)
 {
     int t = rand()%8;
-    NSEngine::ScheduleTask(t,[x,y,r,g,b,s,speed](){
-        int a = AnmManager::newAnim(effectEtamaBreakP1);
-        AnmManager::anim(a)->set_color(r,g,b);
-        AnmManager::UpdateChild(a,x,y,0,0,0,0,s,s,1);
-        AnmManager::anim(a)->set_pos(Random::Floatm11()*3.6,Random::Floatm11()*3.6,0);
-        AnmManager::anim(a)->storage = speed;
-    });
+    //NSEngine::ScheduleTask(t,[x,y,r,g,b,s,speed](){
+    //    int a = AnmManager::newAnim(effectEtamaBreakP1);
+    //    AnmManager::anim(a)->set_color(r,g,b);
+    //    AnmManager::UpdateChild(a,x,y,0,0,0,0,s,s,1);
+    //    AnmManager::anim(a)->set_pos(Random::Floatm11()*3.6,Random::Floatm11()*3.6,0);
+    //    AnmManager::anim(a)->storage = speed;
+    //});
     for (int i = 0; i < n; i++)
     {
         float sx = (rand()%2)*2-1;
-        NSEngine::ScheduleTask(t,[x,y,s,sx,r,g,b,speed](){
-            int a = AnmManager::newAnim(effectEtamaBreakP1);
-            AnmManager::anim(a)->set_color(r,g,b);
-            AnmManager::anim(a)->set_pos(Random::Floatm11()*3.6,Random::Floatm11()*3.6,0);
-            AnmManager::anim(a)->storage = speed;
-            AnmManager::UpdateChild(a,x,y,0,0,0,0,s*sx,s,1);
-            a = AnmManager::newAnim(effectEtamaBreakP2);
-            AnmManager::anim(a)->set_color(r,g,b);
-            AnmManager::anim(a)->set_pos(Random::Floatm11()*3.6,Random::Floatm11()*3.6,0);
-            AnmManager::anim(a)->storage = speed;
-            AnmManager::UpdateChild(a,x,y,0,0,0,0,s*sx,s,1);
-        });
+        //NSEngine::ScheduleTask(t,[x,y,s,sx,r,g,b,speed](){
+        //    int a = AnmManager::newAnim(effectEtamaBreakP1);
+        //    AnmManager::anim(a)->set_color(r,g,b);
+        //    AnmManager::anim(a)->set_pos(Random::Floatm11()*3.6,Random::Floatm11()*3.6,0);
+        //    AnmManager::anim(a)->storage = speed;
+        //    AnmManager::UpdateChild(a,x,y,0,0,0,0,s*sx,s,1);
+        //    a = AnmManager::newAnim(effectEtamaBreakP2);
+        //    AnmManager::anim(a)->set_color(r,g,b);
+        //    AnmManager::anim(a)->set_pos(Random::Floatm11()*3.6,Random::Floatm11()*3.6,0);
+        //    AnmManager::anim(a)->storage = speed;
+        //    AnmManager::UpdateChild(a,x,y,0,0,0,0,s*sx,s,1);
+        //});
         t+=rand()%8;
     }
 }

@@ -1,5 +1,5 @@
 #include "bulletsScripts.h"
-#include <Assets.h>
+//#include <Assets.h>
 #include "CollisionManager.h"
 #include "AnmEffects.h"
 #include <math/Random.h>
@@ -159,9 +159,9 @@ void pbscr::Init()
     addHit(&BulletHitSplash2);
     addHit(&BulletHitBase);
     addHit(&BulletHitBase);
-    sounds.push_back(gameassets::se_plst00);
+    //sounds.push_back(gameassets::se_plst00);
     for(int i = 0; i < 63; i++) sounds.push_back(0);
-    sounds.push_back(gameassets::se_msl);
+    //sounds.push_back(gameassets::se_msl);
     initialized = true;
 }
 

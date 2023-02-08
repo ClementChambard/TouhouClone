@@ -18,15 +18,15 @@ const float gravitytime = (float) abs(PICKUP_MAX_SPEED / PICKUP_ACCEL);
 
 void Pickup::Init()
 {
-    src_pickupsound = NSEngine::AudioEngine::CreateSource();
+    //src_pickupsound = NSEngine::AudioEngine::CreateSource();
     PickupPool = new Pickup[500];
     CancelPickupPool = new Pickup[2048];
 }
 
 void Pickup::SpawnPickup(int type, float x, float y, float xto, float yto)
 {
-    if (type == 5 || type == 6) NSEngine::AudioEngine::PlaySound(gameassets::se_bonus2);
-    if (type == 3 || type == 4) NSEngine::AudioEngine::PlaySound(gameassets::se_bonus);
+    //if (type == 5 || type == 6) NSEngine::AudioEngine::PlaySound(gameassets::se_bonus2);
+    //if (type == 3 || type == 4) NSEngine::AudioEngine::PlaySound(gameassets::se_bonus);
     float spd = PICKUP_MAX_SPEED;
     float frames = gravitytime + (yto-y-gravityheight) / PICKUP_MAX_SPEED;
     PickupPool[lastPickup].x = x;
@@ -120,7 +120,7 @@ void Pickup::Pupdate(float framespeed)
                 AnmManager::deleteAnim(anm);
                 anm = -1;
                 player->Collect(type, ywhencollected);
-                NSEngine::AudioEngine::PlaySoundAtSource(src_pickupsound, gameassets::se_item00);
+                //NSEngine::AudioEngine::PlaySoundAtSource(src_pickupsound, gameassets::se_item00);
                 return;
             }
             float ang = math::point_direction(x,y,player->x,player->y);
@@ -159,19 +159,19 @@ Pickup::Pickup() {}
 
 void Pickup::CreateCollectText(std::string text, float x, float y, int r, int g, int b)
 {
-    AsciiElement* e = AsciiManager::newTxt(GL_ L16,gameassets::fnt_pickup1,text);
-    e->set_align(NSEngine::fa_center,NSEngine::fa_center);
-    e->set_color(r,g,b); e->set_alpha(0); e->alpha_time(40,0,255); e->set_pos(x,y); e->pos_time(40,4,x,y+8);
-    std::function<void(void)> f1 = [e](){
-        e->set_font(gameassets::fnt_pickup2);
-    };
-    std::function<void(void)> f2 = [e](){
-        e->set_font(gameassets::fnt_pickup3);
-    };
-    std::function<void(void)> f3 = [e](){
-        e->destroy();
-    };
-    NSEngine::ScheduleTask(44,f1);
-    NSEngine::ScheduleTask(52,f2);
-    NSEngine::ScheduleTask(60,f3);
+    //AsciiElement* e = AsciiManager::newTxt(GL_ L16,gameassets::fnt_pickup1,text);
+    //e->set_align(NSEngine::fa_center,NSEngine::fa_center);
+    //e->set_color(r,g,b); e->set_alpha(0); e->alpha_time(40,0,255); e->set_pos(x,y); e->pos_time(40,4,x,y+8);
+    //std::function<void(void)> f1 = [e](){
+        //e->set_font(gameassets::fnt_pickup2);
+    //};
+    //std::function<void(void)> f2 = [e](){
+    //    e->set_font(gameassets::fnt_pickup3);
+    //};
+    //std::function<void(void)> f3 = [e](){
+    //    e->destroy();
+    //};
+    //NSEngine::ScheduleTask(44,f1);
+    //NSEngine::ScheduleTask(52,f2);
+    //NSEngine::ScheduleTask(60,f3);
 }

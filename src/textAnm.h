@@ -1,7 +1,7 @@
 #ifndef TEXTANM
 #define TEXTANM
 
-#include <AnmManager.h>
+#include "AnmManagerOld/AnmManager.h"
 
 class textAnm {
     public:
@@ -40,14 +40,14 @@ class AsciiElement {
         void alpha_time(uint16_t t, uint8_t m, uint8_t a) { ITP_ (&this->a, this->a, a, m, t, false); }
         void set_scale(float x, float y) { scale = glm::vec2(x, y); }
         void scale_time(uint16_t t, uint8_t m, float x, float y) { ITP_ (&scale, scale, glm::vec2(x, y), m, t, false); }
-        void set_align(NSEngine::font_align h, NSEngine::font_align v) { halign = h; valign = v; }
+        //void set_align(NSEngine::font_align h, NSEngine::font_align v) { halign = h; valign = v; }
 
-        void destroy() {pos = glm::vec2();scale = glm::vec2(1.f, 1.f);col = glm::vec<3, uint8_t>(255, 255, 255);a = 255;layerID=0;active=0;halign=NSEngine::fa_left;valign=NSEngine::fa_top;text="";}
+        void destroy() {pos = glm::vec2();scale = glm::vec2(1.f, 1.f);col = glm::vec<3, uint8_t>(255, 255, 255);a = 255;layerID=0;active=0;/*halign=NSEngine::fa_left;valign=NSEngine::fa_top;*/text="";}
     private:
         std::string text = "";
         int font = 0;
-        uint8_t halign = NSEngine::fa_left;
-        uint8_t valign = NSEngine::fa_top;
+        //uint8_t halign = NSEngine::fa_left;
+        //uint8_t valign = NSEngine::fa_top;
         uint8_t layerID = 0;
         std::vector<int> anmids;
         bool active = 0;

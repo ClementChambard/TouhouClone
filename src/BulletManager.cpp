@@ -159,7 +159,7 @@ void BulletManager::Transform::Apply(Bullet* bu)
         bu->accel = -bu->storedspeed/(float)a;
         if (bu->frame != 0) 
         {
-            NSEngine::AudioEngine::PlaySound(handlers[bu->handler]->snd2);
+            //NSEngine::AudioEngine::PlaySound(handlers[bu->handler]->snd2);
             bu->speed = bu->storedspeed;
             bu->direction += r;
             bu->steps++;
@@ -229,7 +229,7 @@ void BulletManager::BulletHandler::Fire(float x, float y)
         for (float i = 0; i < ct2; i++)
         {
             float a = 0.f;
-            float jj = j - ct1/2 + (1-(ct1%2))*0.5f;
+            float jj = j - (int)(ct1/2.f) + (1-(ct1%2))*0.5f;
             switch(mode)
             {
                 case AIM_AT:
@@ -272,7 +272,7 @@ void BulletManager::BulletHandler::Fire(float x, float y)
                 if (j!=0) BulletManager::CreateBullet(id,x,y,s,a2);
             }
         }
-    NSEngine::AudioEngine::PlaySound(snd1);
+    //NSEngine::AudioEngine::PlaySound(snd1);
 }
 
 void BulletManager::etClear(float x, float y, float r)

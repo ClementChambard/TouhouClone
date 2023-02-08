@@ -1,7 +1,7 @@
 #ifndef ANMBULLETS
 #define ANMBULLETS
 
-#include <AnmManager.h>
+#include "AnmManagerOld/AnmManager.h"
 
 class AnmBullets {
     public:

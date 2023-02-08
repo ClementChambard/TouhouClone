@@ -53,9 +53,9 @@ void AsciiElement::Draw()
     if (!active) return;
     NSEngine::draw_set_layer(layerID);
     NSEngine::Color c = NSEngine::Color(col.r, col.g, col.b, a);
-    NSEngine::draw_set_halign((NSEngine::font_align)halign);
-    NSEngine::draw_set_valign((NSEngine::font_align)valign);
-    NSEngine::SpriteManager::draw_text(font,text.c_str(),pos,scale,c);
+    //NSEngine::draw_set_halign((NSEngine::font_align)halign);
+    //NSEngine::draw_set_valign((NSEngine::font_align)valign);
+    //NSEngine::SpriteManager::draw_text(font,text.c_str(),pos,scale,c);
 }
 
 void AsciiElement::set_text(std::string t)

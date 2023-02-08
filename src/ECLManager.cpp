@@ -261,9 +261,10 @@ void ECLManager::etBreak(float x, float y, bool item, float rate)
             if (item) BulletManager::etCancel(x,y,r);
             else BulletManager::etClear(x,y,r);
         };
-        NSEngine::ScheduleTask(f,func);
+        //NSEngine::ScheduleTask(f,func);
         f++;
         r += rate;
+        func();
     }
 }
 

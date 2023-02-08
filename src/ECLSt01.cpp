@@ -305,7 +305,7 @@ namespace ST01
             Bul_ etSprite(bh,5,4);
             Bul_ etCount(bh,d4(1,1,2,1),d4(1,1,1,4));
             Bul_ etSpeed(bh,d4(1,0.01,1,4),1);
-            Bul_ etSound(bh,gameassets::se_tan00,-1);
+            //Bul_ etSound(bh,gameassets::se_tan00,-1);
             Bul_ etEx(bh,0,2,1,0,0,0,0,0,0,0);
             Bul_ etEx(bh,0,8,80,0,0,0,d2(0.0125,0.0375),0,0,0);
             Bul_ etEx(bh,0,EX_ACCEL_F,40,0,0,0,0.1,0,0,0);
@@ -324,7 +324,7 @@ namespace ST01
         fFrame(0)
             Enm_ anmSlots.push_back(Anm_ newAnim(Enm2U,-1,1));
             Anm_ anim(Enm_ anmSlots[0])->offset_sprite(16);
-            Snd_ PlaySound(gameassets::se_boon00);
+            //Snd_ PlaySound(gameassets::se_boon00);
             Enm_ setHurtbox(28);
             Enm_ setHitbox(16);
             Enm_ baseItemDrop = 1;
@@ -358,7 +358,7 @@ namespace ST01
             Bul_ etCount(bh,1,d4(1,1,1,2));
             Bul_ etAngle(bh,0,0);
             Bul_ etSpeed(bh,d4(1,1,3,4),1);
-            Bul_ etSound(bh,gameassets::se_tan00,-1);
+            //Bul_ etSound(bh,gameassets::se_tan00,-1);
             Bul_ etEx(bh,0,2,1,0,0,0,0,0,0,0);
         }
 
@@ -557,7 +557,7 @@ namespace ST01
     
         if (subframe < 195 && subframe%15==0)
         {
-            float xx = 120-20*subframe/15;
+            float xx = 120-20*subframe/15.f;
             Ecl_ enmCreate(GirlRedA01,xx-60,-32,60,1000,1);   
             Ecl_ enmCreate(GirlBlueA01,xx,-20,60,1000,1);   
             Ecl_ enmCreate(GirlRedA01,xx+60,-8,60,1000,1);   
@@ -565,7 +565,7 @@ namespace ST01
         else if (subframe == 490) { ECLRETURN; }
         else if (subframe > 385 && subframe%15==0)
         {
-            float xx = -120+40*(subframe-385)/15;
+            float xx = -120+40*(subframe-385)/15.f;
             Ecl_ enmCreate(GirlRedA01,xx-60,-32,60,1000,1);   
             Ecl_ enmCreate(GirlBlueA01,xx,-20,60,1000,1);   
             Ecl_ enmCreate(GirlRedA01,xx,-8,60,1000,1);   
@@ -599,13 +599,13 @@ namespace ST01
     {
         if (subframe < 195 && subframe%15==0)
         {
-            float xx = -120+20*subframe/15;
+            float xx = -120+20*subframe/15.f;
             Ecl_ enmCreate(GirlBlueA01,xx,-20,60,1000,1);   
         }
         else if (subframe == 300) { ECLRETURN; }
         else if (subframe >= 195 && subframe%15==0)
         {
-            float xx = 120-40*(subframe-195)/15;
+            float xx = 120-40*(subframe-195)/15.f;
             Ecl_ enmCreate(GirlRedA01,xx+60,-8,60,1000,1);   
         }
     }
@@ -843,7 +843,7 @@ namespace ST01
             effectExplodeMapleBig(Enm_ pos.x, Enm_ pos.y, 1, 120, 2, 1);
             Sub_ flagSet(3);
             Anm_ UpdateChild(Anm_ newAnim(effectExplode),Enm_ pos.x, Enm_ pos.y,0,0,0,0,1,1,1);
-            Snd_ PlaySound(gameassets::se_enep01);
+            //Snd_ PlaySound(gameassets::se_enep01);
             Ecl_ SetBoss(nullptr);
             Tim_ ShowTime(0);
         mFrame(121)
@@ -1044,7 +1044,7 @@ namespace ST01
             bh1 = Bul_ AddHandler();
             Bul_ etAim(bh1,1);
             Bul_ etSprite(bh1,8,13);
-            Bul_ etSound(bh1,gameassets::se_kira00,gameassets::se_kira00);
+            //Bul_ etSound(bh1,gameassets::se_kira00,gameassets::se_kira00);
             Bul_ etCount(bh1,1,d4(1,1,2,3));
             Bul_ etAngle(bh1,-1.5707964f,0.6981317f);
             Bul_ etSpeed(bh1,2.1f,1.5f);
@@ -1058,7 +1058,7 @@ namespace ST01
             bh2 = Bul_ AddHandler();
             Bul_ etAim(bh2,1);
             Bul_ etSprite(bh2,8,13);
-            Bul_ etSound(bh2,gameassets::se_kira00,gameassets::se_kira00);
+            //Bul_ etSound(bh2,gameassets::se_kira00,gameassets::se_kira00);
             Bul_ etCount(bh2,1,d4(1,1,2,3));
             Bul_ etAngle(bh2,1.5707964f,0.6981317f);
             Bul_ etSpeed(bh2,2.1f,1.5f);
@@ -1102,7 +1102,7 @@ namespace ST01
             bh = Bul_ AddHandler();
             Bul_ etAim(bh,0);
             Bul_ etSprite(bh,20,1);
-            Bul_ etSound(bh,gameassets::se_kira00,gameassets::se_kira00);
+            //Bul_ etSound(bh,gameassets::se_kira00,gameassets::se_kira00);
             Bul_ etCount(bh,1,1);
             Bul_ etAngle(bh,0,0.08726646f);
             Bul_ etSpeed(bh,0.01,0.8);
@@ -1126,7 +1126,7 @@ namespace ST01
             bh = Bul_ AddHandler();
             Bul_ etAim(bh,0);
             Bul_ etSprite(bh,4,2);
-            Bul_ etSound(bh,gameassets::se_kira00,gameassets::se_kira00);
+            //Bul_ etSound(bh,gameassets::se_kira00,gameassets::se_kira00);
             Bul_ etCount(bh,d4(1,1,3,5),1);
             Bul_ etAngle(bh,0,0.12217305f);
             Bul_ etSpeed(bh,1,0.8f);
@@ -1151,11 +1151,11 @@ namespace ST01
             Enm_ DropAll();
             Enm_ ClearDrops();
             CollisionManager::destroyEnemyHurtbox(Enm_ hurtBox);
-            Snd_ PlaySound(gameassets::se_enep01);
+            //Snd_ PlaySound(gameassets::se_enep01);
             Enm_ MoveRand(60,0,24);
             Tim_ ShowTime(false);
         mFrame(61)
-            Snd_ PlaySound(gameassets::se_enep01);
+            //Snd_ PlaySound(gameassets::se_enep01);
             Ecl_ SetBoss(nullptr);
             //screen shake
             effectExplodeMapleBig(Enm_ pos.x,Enm_ pos.y,1,180,2,2);
@@ -1187,9 +1187,9 @@ namespace ST01
                 Enm_ DropAll();
             }
             Ecl_ CAPTURE = true;
-            Enm_ hitsound = gameassets::se_damage00;
+            //Enm_ hitsound = gameassets::se_damage00;
             Ecl_ thebossanms.ClearSections();
-            Snd_ PlaySound(gameassets::se_tan00);
+            //Snd_ PlaySound(gameassets::se_tan00);
             Enm_ MovePosTime(60,4,0,128);
             Enm_ MoveLimit(0,128,240,64);
             Enm_ SetLife(1700,0);
@@ -1224,19 +1224,19 @@ namespace ST01
             }
             Tim_ SetTime(25);
             Ecl_ CAPTURE = true;
-            Enm_ hitsound = gameassets::se_damage00;
+            //Enm_ hitsound = gameassets::se_damage00;
             //setInvuln(120);
             Enm_ invFrame = 120;
             Enm_ SetLife(9700);
             Ecl_ thebossanms.AddSection(1700);
             subanm->Reset();
             Ecl_ thebossanms.Stars(0);
-            Snd_ PlaySound(gameassets::se_tan00);
+            //Snd_ PlaySound(gameassets::se_tan00);
             Enm_ MoveLimit(0,128,240,64);
-            Snd_ PlaySound(gameassets::se_ch02);
+            //Snd_ PlaySound(gameassets::se_ch02);
             effectMaple(Enm_ pos.x,Enm_ pos.y,1,0b00010010,80,80,255,40,40,255);
         mFrame(91)
-            Snd_ PlaySound(gameassets::se_enep02);
+            //Snd_ PlaySound(gameassets::se_enep02);
             effectMaple(Enm_ pos.x,Enm_ pos.y,1,0b00100100,255,80,255,255,0,255);
         mFrame2(120,300)
             if (subframe == 120)
@@ -1251,7 +1251,7 @@ namespace ST01
             Enm_ MoveRand(60,4,30);
         eFrame
 
-        if (subhp < 3000) Enm_ hitsound = gameassets::se_damage01;
+        //if (subhp < 3000) Enm_ hitsound = gameassets::se_damage01;
         
         Interrupt(1700,1500,BossCard2);
     }
@@ -1269,12 +1269,12 @@ namespace ST01
             Ecl_ CAPTURE = true;
             Tim_ SetTime(25);
             Ecl_ thebossanms.ClearSections();
-            Enm_ hitsound = gameassets::se_damage00;
+            //Enm_ hitsound = gameassets::se_damage00;
             Enm_ SetLife(1700,0);
             subanm->Reset();
             Enm_ MovePosTime(60,4,0,128);
             Enm_ MoveLimit(0,128,240,64);
-            Snd_ PlaySound(gameassets::se_tan00);
+            //Snd_ PlaySound(gameassets::se_tan00);
             Crt_ Start(st01CT,1500,0);
             effectMaple(0,135,1,0b00010010,255,80,80,255,0,0);
         mFrame2(91,191)
@@ -1286,7 +1286,7 @@ namespace ST01
             Enm_ MoveRand(60,4,30);
         eFrame
 
-        if (subhp < 250) Enm_ hitsound = gameassets::se_damage01;
+        //if (subhp < 250) Enm_ hitsound = gameassets::se_damage01;
 
         Interrupt(0,1500,Boss2);
     }
@@ -1296,16 +1296,16 @@ namespace ST01
         fFrame(0)
             Tim_ SetTime(25);
             Ecl_ CAPTURE = true;
-            Enm_ hitsound = gameassets::se_damage00;
+            //Enm_ hitsound = gameassets::se_damage00;
             Bul_ ClearHandlers();
             Tim_ ShowTime(true);
             Ecl_ thebossanms.AddSection(1700);//color -24448
             Ecl_ thebossanms.Stars(1);
             effectMaple(0,135,1,0b00010010,255,192,128,192,192,64);
-            Snd_ PlaySound(gameassets::se_ch02);
+            //Snd_ PlaySound(gameassets::se_ch02);
         mFrame(60)
             effectMaple(0,135,1,0b00100100,255,192,128,192,192,64);
-            Snd_ PlaySound(gameassets::se_enep02);
+            //Snd_ PlaySound(gameassets::se_enep02);
             VAR(0) = 3;
             Sub_ Async(Boss1_at2);
         nFrame2(61,241)
@@ -1316,7 +1316,7 @@ namespace ST01
             Enm_ MoveRand(60,4,30);
         eFrame
 
-        if (subhp < 3000) Enm_ hitsound = gameassets::se_damage01; 
+        //if (subhp < 3000) Enm_ hitsound = gameassets::se_damage01;
 
         Interrupt(1700,1500,BossCard1);
     }

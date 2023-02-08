@@ -26,7 +26,7 @@ void PauseMenu::Open(int i)
     AnmManager::UpdateChild(anmback,-240,64,0,0,0,0,1,1,1);
     AnmManager::UpdateChild(anmtitle,-240,64,0,0,0,0,1,1,1);
     optionOn = 0;
-    NSEngine::AudioEngine::PlaySound(gameassets::se_pause);
+    //NSEngine::AudioEngine::PlaySound(gameassets::se_pause);
     switch (i)
     {
         case 0:
@@ -63,14 +63,14 @@ void PauseMenu::Update()
         else if (KEYPRESSED(K_SHOOT) || KEYPRESSED(K_CONFIRM)) Confirm.Confirm();
         else if (Inputs::Keyboard().Pressed(NSK_escape) || KEYPRESSED(K_SPELL))
         {
-            if (Confirm.confirm) { Confirm.Chg(); NSEngine::AudioEngine::PlaySound(gameassets::se_cancel00); }
+            if (Confirm.confirm) { Confirm.Chg(); }//NSEngine::AudioEngine::PlaySound(gameassets::se_cancel00); }
             else Confirm.Confirm();
         }
         return;
     }
     if (dir != 0) 
     {
-        NSEngine::AudioEngine::PlaySound(gameassets::se_select00);
+        //NSEngine::AudioEngine::PlaySound(gameassets::se_select00);
         options[optionOn].isNotOn();
         optionOn += dir;
         optionOn = (int) math::warp((float)optionOn,0,(float)options.size());
@@ -101,12 +101,12 @@ void PauseMenu::option::isNotOn()
 }
 void PauseMenu::option::click()
 {
-    AnmManager::interrupt(anm,6);
-    NSEngine::ScheduleTask(30,[this](){
-        if (needsConfirm) Confirm.Open(onClick);
-        else onClick();
-    },-1,true);
-    NSEngine::AudioEngine::PlaySound(gameassets::se_ok00);
+    //AnmManager::interrupt(anm,6);
+    //NSEngine::ScheduleTask(30,[this](){
+    //    if (needsConfirm) Confirm.Open(onClick);
+    //    else onClick();
+    //},-1,true);
+    //NSEngine::AudioEngine::PlaySound(gameassets::se_ok00);
 }
 void PauseMenu::option::del()
 {
@@ -148,23 +148,23 @@ void PauseMenu::conf::Chg()
         AnmManager::interrupt(anmno,3);
         AnmManager::interrupt(anmyes,7);
     }
-    NSEngine::AudioEngine::PlaySound(gameassets::se_select00);
+    //NSEngine::AudioEngine::PlaySound(gameassets::se_select00);
 }
 
 void PauseMenu::conf::Confirm()
 {
     if (confirm) { AnmManager::interrupt(anmyes,6);
-        NSEngine::AudioEngine::PlaySound(gameassets::se_ok00);}
-    else {AnmManager::interrupt(anmno,6);NSEngine::AudioEngine::PlaySound(gameassets::se_cancel00);}
-    NSEngine::ScheduleTask(30,[this](){
-    AnmManager::interrupt(PauseMenu::anmtitle,7);
-    AnmManager::interrupt(PauseMenu::anmback,7);
-    for (option o : options) AnmManager::interrupt(o.anm,4);
-    AnmManager::interrupt(options[optionOn].anm,17);
-    if (confirm) func();
-    open = false;
-    AnmManager::interrupt(anmtitle,1);
-    AnmManager::interrupt(anmyes,1);
-    AnmManager::interrupt(anmno,1);
-    },-1,true);
+    }//NSEngine::AudioEngine::PlaySound(gameassets::se_ok00);}
+    else {AnmManager::interrupt(anmno,6);}//NSEngine::AudioEngine::PlaySound(gameassets::se_cancel00);}
+    //NSEngine::ScheduleTask(30,[this](){
+    //AnmManager::interrupt(PauseMenu::anmtitle,7);
+    //AnmManager::interrupt(PauseMenu::anmback,7);
+    //for (option o : options) AnmManager::interrupt(o.anm,4);
+    //AnmManager::interrupt(options[optionOn].anm,17);
+    //if (confirm) func();
+    //open = false;
+    //AnmManager::interrupt(anmtitle,1);
+    //AnmManager::interrupt(anmyes,1);
+    //AnmManager::interrupt(anmno,1);
+    //},-1,true);
 }

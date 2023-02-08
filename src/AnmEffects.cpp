@@ -573,7 +573,7 @@ void createeffexplode(float x, float y, float a, int t)
 }
 void effectExplodeEnemy(float x, float y, float a, char colors)
 {
-    NSEngine::AudioEngine::PlaySound(gameassets::se_enep00);
+    //NSEngine::AudioEngine::PlaySound(gameassets::se_enep00);
     if (colors&0b00000001) createeffexplode(x,y,a,0);
     if (colors&0b00000010) createeffexplode(x,y,a,2);
     if (colors&0b00000100) createeffexplode(x,y,a,3);
@@ -636,10 +636,10 @@ void effectExplodeMapleBig(float x, float y, float s, int n, int n2, int t)
     for (int i = 0; i < n2; i++)
         for (int j = 0; j < n; j++)
         {
-            NSEngine::ScheduleTask(i*t,[x,y,s](){
-                int a = AnmManager::newAnim(effectExplodeMapleBigP);
-                AnmManager::UpdateChild(a,x,y,0,0,0,0,s,s,1);
-            });
+            //NSEngine::ScheduleTask(i*t,[x,y,s](){
+            //    int a = AnmManager::newAnim(effectExplodeMapleBigP);
+            //    AnmManager::UpdateChild(a,x,y,0,0,0,0,s,s,1);
+            //});
         }
 }
 
@@ -750,18 +750,18 @@ void effectMaple(float x, float y, float s, char type,int r1, int g1, int b1, in
     {
         for (int i = 0; i < 60; i+=2)
         {
-            NSEngine::ScheduleTask(i,[x,y,s](){
-                AnmManager::UpdateChild(AnmManager::newAnim(effectMapleP1),x,y,0,0,0,0,s,s,1);
-            });
+            //NSEngine::ScheduleTask(i,[x,y,s](){
+            //    AnmManager::UpdateChild(AnmManager::newAnim(effectMapleP1),x,y,0,0,0,0,s,s,1);
+            //});
         }
         return;
     }
     for (int i = 0; i < 30; i++)
     {
-        NSEngine::ScheduleTask(i,[x,y,s,type](){
-            int a = AnmManager::newAnim(type&0b00000011?(type&0b00000001?effectMapleP1:effectMapleP2):(type&0b00000100?effectMapleP3:effectMapleP4),-1,1);
-            AnmManager::UpdateChild(a,x,y,0,0,0,0,s,s,1);
-        });
+        //NSEngine::ScheduleTask(i,[x,y,s,type](){
+        //    int a = AnmManager::newAnim(type&0b00000011?(type&0b00000001?effectMapleP1:effectMapleP2):(type&0b00000100?effectMapleP3:effectMapleP4),-1,1);
+        //    AnmManager::UpdateChild(a,x,y,0,0,0,0,s,s,1);
+        //});
     }
 }
 void effectMapleP1(AnimScript* anm)
@@ -1219,7 +1219,7 @@ void effectBreakWave(float a, float x, float y, float s, int r, int g, int b, in
     for (int i = 0; i < n; i++)
     {
 
-        NSEngine::ScheduleTask(i*7,[a,x,y,s,r,g,b,f0,f1,al](){
+        //NSEngine::ScheduleTask(i*7,[a,x,y,s,r,g,b,f0,f1,al](){
             
                 int anm = AnmManager::newAnim(effectBreakWaveP,-1,1);
                 AnimScript* as = AnmManager::anim(anm);
@@ -1229,7 +1229,7 @@ void effectBreakWave(float a, float x, float y, float s, int r, int g, int b, in
                 as->set_color(r,g,b);
                 as->set_rot(Random::Floatm11()*al,0,Random::Floatm11()*al);
                 AnmManager::UpdateChild(anm,x,y,0,0,0,a,s,s,1);
-        });
+        //});
         f0 += xx;
         f1 += yy;
         al*=1.3;
@@ -1292,10 +1292,10 @@ void effectCharge(float a, float x, float y, int r, int g, int b, int speed, boo
     };
     for (int i = 0; i < speed; i++)
     {
-        NSEngine::ScheduleTask(i,f);
+        //NSEngine::ScheduleTask(i,f);
     }
-    static int src = NSEngine::AudioEngine::CreateSource();
-    NSEngine::AudioEngine::PlaySoundAtSource(src,gameassets::se_ch02);
+    //static int src = NSEngine::AudioEngine::CreateSource();
+    //NSEngine::AudioEngine::PlaySoundAtSource(src,gameassets::se_ch02);
 }
 void effectChargeP1(AnimScript* anm)
 {

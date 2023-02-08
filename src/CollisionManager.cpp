@@ -191,7 +191,7 @@ bool CollisionManager::IsHit(int type, int i, float& damage)
     return false;
 }
 
-#include <SpriteManager.h>
+#include <DrawFuncs.h>
 void CollisionManager::DEBUG_DRAW_BOXES()
 {
     NSEngine::draw_set_layer(NSEngine::engineData::debugLayer);

@@ -4,7 +4,7 @@
 #include <vector>
 #include "BulletMacros.h"
 #include "PlayerHUD.h"
-#include <Assets.h>
+//#include <Assets.h>
 
 #define CID(i) if(i>=handlers.size())return;
 
@@ -76,7 +76,7 @@ class BulletManager {
                 if (!bullet_pool[i].active) continue;
                 if (ValidHandler(bullet_pool[i].handler))
                 for (Transform t : handlers[bullet_pool[i].handler]->transforms) if (t.frame == bullet_pool[i].frame || t.type == EX_STEP) t.Apply(&(bullet_pool[i]));
-                bullet_pool[i].Update();
+                    bullet_pool[i].Update();
                 PlayerHUD::etama += bullet_pool[i].active;
             }
         }
@@ -92,7 +92,7 @@ class BulletManager {
         static void etSpeed(unsigned int id, float speed1, float speed2) { CID(id) handlers[id]->spd1 = speed1; handlers[id]->spd2 = speed2; }
         static void etCount(unsigned int id, int count1, int count2) { CID(id) handlers[id]->ct1 = count1; handlers[id]->ct2 = count2; }
         static void etAim(unsigned int id, int aimMode) { CID(id) handlers[id]->mode = aimMode; }
-        static void etSound(unsigned int id, int sound1, int sound2) { CID(id) handlers[id]->snd1 = sound1; handlers[id]->snd2 = sound2; }
+        static void etSound(unsigned int id, int sound1, int sound2) { CID(id) /*handlers[id]->snd1 = sound1; handlers[id]->snd2 = sound2;*/ }
         static void etEx(unsigned int id, int frame, int type, int a, int b, int c, int d, float r, float s, float m, float n) { CID(id) handlers[id]->transforms.push_back({frame,type,a,b,c,d,r,s,m,n}); }
         static void CreateBullet(int id, float x, float y, float s, float a);
 
@@ -119,7 +119,7 @@ class BulletManager {
                 float ang1 = 0.f, ang2 = 0.f;
                 float spd1 = 1.f, spd2 = 1.f;
                 int ct1 = 1, ct2 = 1, mode = 0;
-                int snd1 = gameassets::se_tan00, snd2 = gameassets::se_kira00;
+                //int snd1 = gameassets::se_tan00, snd2 = gameassets::se_kira00;
                 friend class BulletManager;
         };
 

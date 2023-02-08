@@ -28,7 +28,7 @@ bool AnmAscii::isInit = false;
 void AnmAscii::Init()
 {
     if (isInit) return;
-    int tex_ascii = gameassets::tex_ascii;
+    int tex_ascii = 1;//= gameassets::tex_ascii;
     asc239 = GS_ AddSprite(tex_ascii,16,144,16,16);
     asc240 = GS_ AddSprite(tex_ascii,32,144,16,16);
     asc241 = GS_ AddSprite(tex_ascii,48,144,16,16);

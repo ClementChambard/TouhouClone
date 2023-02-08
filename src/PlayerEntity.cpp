@@ -4,6 +4,7 @@
 #include "BulletManager.h"
 #include <math/math.h>
 #include "PlayerBullet.h"
+#include "AnmFront.h"
 #include "Pickup.h"
 #include "Players.h"
 #include "AnmEffects.h"
@@ -106,7 +107,7 @@ void PlayerEntity::Collect(int PickupType, float ywhencollected)
     {
         if (power >= powerforpowerup) 
         {
-            NSEngine::AudioEngine::PlaySound(gameassets::se_powerup);
+            //NSEngine::AudioEngine::PlaySound(gameassets::se_powerup);
             Pickup::CreateCollectText("p",x,y,255,255,0);
         }
         else
@@ -120,11 +121,11 @@ void PlayerEntity::Collect(int PickupType, float ywhencollected)
     if (life > 40) life = 40;
     if (spell > 40) spell = 40;
     if (life >= lifeforextends) { 
-        NSEngine::AudioEngine::PlaySound(gameassets::se_extend);
+        //NSEngine::AudioEngine::PlaySound(gameassets::se_extend);
         AnmManager::newAnim(frontExtend);
     }
-    if (spell>= spellfornew)
-        NSEngine::AudioEngine::PlaySound(gameassets::se_cardget);
+    if (spell>= spellfornew) {}
+        //NSEngine::AudioEngine::PlaySound(gameassets::se_cardget);
 }
 
 void PlayerEntity::Update(float framespeed)
@@ -226,8 +227,8 @@ void PlayerEntity::Die()
 {
     if (invFrame > 0 || deadframe > 0) return;
     deadframe = 1;
-    static int src = NSEngine::AudioEngine::CreateSource();
-    NSEngine::AudioEngine::PlaySoundAtSource(src,gameassets::se_pldead00);
+    //static int src = NSEngine::AudioEngine::CreateSource();
+    //NSEngine::AudioEngine::PlaySoundAtSource(src,gameassets::se_pldead00);
     AnmManager::UpdateChild(AnmManager::newAnim(effectExplode),x,y,0,0,0,0,1,1,1);
 }
 
@@ -235,7 +236,7 @@ void PlayerEntity::Graze()
 {
     graze++;
     score += 10;
-    static int src = NSEngine::AudioEngine::CreateSource();
-    NSEngine::AudioEngine::PlaySoundAtSource(src,gameassets::se_graze);
+    //static int src = NSEngine::AudioEngine::CreateSource();
+    //NSEngine::AudioEngine::PlaySoundAtSource(src,gameassets::se_graze);
     AnmManager::UpdateChild(AnmManager::newAnim(effectBase4),x,y,0,0,0,0,1,1,1);
 }

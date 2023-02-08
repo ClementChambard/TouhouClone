@@ -1,7 +1,7 @@
 #ifndef ANMASCII
 #define ANMASCII
 
-#include <AnmManager.h>
+#include "AnmManagerOld/AnmManager.h"
 
 class AnmAscii {
     public: static void Init();

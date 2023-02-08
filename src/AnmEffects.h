@@ -1,7 +1,7 @@
 #ifndef ANMEFFECTS
 #define ANMEFFECTS
 
-#include <AnmManager.h>
+#include "AnmManagerOld/AnmManager.h"
 
 
 class AnmEffects {

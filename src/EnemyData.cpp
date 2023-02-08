@@ -22,7 +22,7 @@ void EnemyData::Update()
                 if (hitsound != -1 && hitsoundframe == 0)
                 {
                     hitsoundframe = 3;
-                    NSEngine::AudioEngine::PlaySound(hitsound);
+                    //NSEngine::AudioEngine::PlaySound(hitsound);
                 }
             }
         }
@@ -58,7 +58,7 @@ EnemyData::~EnemyData()
 void EnemyData::DropAll()
 {
     if (baseItemDrop != -1)
-    Pickup::SpawnPickup(baseItemDrop,pos.x,pos.y,pos.x,pos.y+20.f);
+        Pickup::SpawnPickup(baseItemDrop,pos.x,pos.y,pos.x,pos.y+20.f);
     if (drops == nullptr) return;
     for (DropData::Drop d : drops->BonusDrop)
     {

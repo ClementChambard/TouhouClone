@@ -30,7 +30,7 @@ void cdbg::Start(void (*AnmFunc)(AnimScript*), int time, int id)
     Timer::ShowTime(true,true);
     started = true;
     fail = false;
-    NSEngine::AudioEngine::PlaySound(gameassets::se_cat00);
+    //NSEngine::AudioEngine::PlaySound(gameassets::se_cat00);
     if (ECLManager::boss != nullptr) ECLManager::boss->spell = true;
 }
 
@@ -107,7 +107,7 @@ void cdbg::Update(float framespeed)
         if (capturesanm != nullptr) capturesanm->interrupt(3);
     }
     if (ECLManager::boss != nullptr)
-    AnmManager::UpdateChild(anmCircle,ECLManager::boss->pos.x,ECLManager::boss->pos.y,0,0,0,0,1,1,1);
+        AnmManager::UpdateChild(anmCircle,ECLManager::boss->pos.x,ECLManager::boss->pos.y,0,0,0,0,1,1,1);
     frame += framespeed;
     bonus-=decrease;
     if (bonusanm != nullptr) bonusanm->set_number(bonus);
@@ -123,7 +123,7 @@ void cdbg::Stop() {
         AnmManager::newAnim(frontSCGetB);
         Timer::ShowCardScore(bonus);
         PlayerEntity::GetInstance()->AddScore(bonus);
-        NSEngine::AudioEngine::PlaySound(gameassets::se_cardget);
+        //NSEngine::AudioEngine::PlaySound(gameassets::se_cardget);
     }
     else AnmManager::newAnim(frontSCFailB);
     AnmManager::newAnim(frontSCTime);

@@ -2,7 +2,7 @@
 #define THANIM
 
 #include <vector>
-#include <AnmManager.h>
+#include "AnmManagerOld/AnmManager.h"
 
 class THAnim {
     public:

@@ -40,8 +40,8 @@ inline void ENDGAME()
     PlayerEntity::DestroyInstance();
     Stg01::UnInit();
     AnmManager::DeleteAll();
-    NSEngine::draw_set_halign(NSEngine::fa_center);
-    NSEngine::draw_set_valign(NSEngine::fa_center);
+    //NSEngine::draw_set_halign(NSEngine::fa_center);
+    //NSEngine::draw_set_valign(NSEngine::fa_center);
     CollisionManager::Reset();
 }
 

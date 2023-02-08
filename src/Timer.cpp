@@ -110,7 +110,7 @@ void Timer::interruptAll(int i)
 
 void Timer::Update()
 {
-    static int src_timeout = NSEngine::AudioEngine::CreateSource();
+    //static int src_timeout = NSEngine::AudioEngine::CreateSource();
     if (time > 0)
     {
         float timePrevious = time;
@@ -130,12 +130,12 @@ void Timer::Update()
         if (time == 0) interruptAll(7);
         if (time <= 2)
         {
-            NSEngine::AudioEngine::PlaySoundAtSource(src_timeout,gameassets::se_timeout2);
+            //NSEngine::AudioEngine::PlaySoundAtSource(src_timeout,gameassets::se_timeout2);
             interruptAll(9);
         }
         else if (time <= 5)
         {
-            NSEngine::AudioEngine::PlaySoundAtSource(src_timeout,gameassets::se_timeout);
+            //NSEngine::AudioEngine::PlaySoundAtSource(src_timeout,gameassets::se_timeout);
             interruptAll(8);
         }
     }

@@ -15,6 +15,8 @@
 
 inline void AnmInitAll()
 {
+    AsciiManager::Init();
+    AnmManager::Init(8192);
     AnmAscii::Init();
     AnmBullets::Init();
     AnmEffects::Init();
@@ -24,7 +26,6 @@ inline void AnmInitAll()
     AnmPl01::Init();
     AnmPl03::Init();
     AnmSt01::Init();
-    AsciiManager::Init();
 }
 
 #endif

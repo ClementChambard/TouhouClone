@@ -78,7 +78,7 @@ class ECLManager {
                     std::string s = std::to_string(sub_pool[i].endat->life) + "/" + std::to_string(sub_pool[i].endat->lifeMax);
  //                   NSEngine::SpriteManager::draw_text(gameassets::fnt_small,s.c_str(),{sub_pool[i].endat->x,sub_pool[i].endat->y+32.f},{1,1},c_white);
                     s = std::to_string(sub_pool[i].endat->speed.x) + "  " +  std::to_string(sub_pool[i].endat->speed.y);
-                    NSEngine::SpriteManager::draw_text(gameassets::fnt_small,s.c_str(),{sub_pool[i].endat->pos.x,sub_pool[i].endat->pos.y+48.f},{1,1},c_white);
+                    //NSEngine::SpriteManager::draw_text(gameassets::fnt_small,s.c_str(),{sub_pool[i].endat->pos.x,sub_pool[i].endat->pos.y+48.f},{1,1},c_white);
                 }
             }
         }
