@@ -1,5 +1,6 @@
 #include "GameLayers.h"
 #include "NSEngine.h"
+#include <Engine.hpp>
 
 NSEngine::SpriteBatch* layer(int i) { return &NSEngine::engineData::layers[i]; }
 
@@ -95,16 +96,16 @@ void GameLayers::Render(NSEngine::LayerRenderer* w)
             l->renderBatch();
         }
 
-        NSEngine::engineData::NSWindow->BindAsRenderTarget();
+        NSEngine::getInstance()->window().BindAsRenderTarget();
 
     
-    if (NSEngine::engineData::gameflags&0b00000100)
+    if (NSEngine::getInstance()->flags().flags.wireframe)
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     static NSEngine::SpriteBatch* drawbatch = (new NSEngine::SpriteBatch())->Init();
 
     drawbatch->begin();
     NSEngine::draw_surface(surf1,-320+16,240,112,-240,drawbatch);
-    if (NSEngine::engineData::gameflags&0b10000000) 
+    if (NSEngine::getInstance()->flags().val&0b10000000)
     {
         NSEngine::draw_set_color({32,224,32,128});
         NSEngine::draw_surface(surf1,-320+16,240+8,112,-240+8,drawbatch,0);
@@ -114,7 +115,7 @@ void GameLayers::Render(NSEngine::LayerRenderer* w)
     w->getShader()->SetProjectionMatrix(NSEngine::activeCamera3D()->getProjection(true));
     w->getShader()->SetViewMatrix(NSEngine::activeCamera3D()->getView(true));
     drawbatch->renderBatch();
-    if (NSEngine::engineData::gameflags&0b00000100)
+    if (NSEngine::getInstance()->flags().flags.wireframe)
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         for (unsigned int i = GL_ L24; i < NSEngine::engineData::layers.size(); i++)
         {
@@ -155,13 +156,13 @@ void GameLayers::Render(NSEngine::Window* w)
         w->BindAsRenderTarget();
 
     
-    if (NSEngine::engineData::gameflags&0b00000100)
+    if (NSEngine::getInstance()->flags().flags.wireframe)
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     static NSEngine::SpriteBatch* drawbatch = (new NSEngine::SpriteBatch())->Init();
 
     drawbatch->begin();
     NSEngine::draw_surface(surf1,-320+16,240,112,-240,drawbatch);
-    if (NSEngine::engineData::gameflags&0b10000000) 
+    if (NSEngine::getInstance()->flags().val&0b10000000)
     {
         NSEngine::draw_set_color({32,224,32,128});
         NSEngine::draw_surface(surf1,-320+16,240+8,112,-240+8,drawbatch,0);
@@ -171,7 +172,7 @@ void GameLayers::Render(NSEngine::Window* w)
     w->getBaseShader()->SetProjectionMatrix(NSEngine::activeCamera3D()->getProjection(true));
     w->getBaseShader()->SetViewMatrix(NSEngine::activeCamera3D()->getView(true));
     drawbatch->renderBatch();
-    if (NSEngine::engineData::gameflags&0b00000100)
+    if (NSEngine::getInstance()->flags().flags.wireframe)
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         for (unsigned int i = GL_ L24; i < NSEngine::engineData::layers.size(); i++)
         {

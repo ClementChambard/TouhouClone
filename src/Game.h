@@ -11,7 +11,7 @@ class Game : public NSEngine::IEngine {
 
 public:
     Game();
-    ~Game() override {}
+    ~Game() override { }
 
     void on_create() override;
     void on_update() override;
@@ -19,8 +19,7 @@ public:
     void on_destroy() override;
 
 private:
-    int d;
-
+    int d = 0;
 };
 
 #endif

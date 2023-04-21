@@ -64,13 +64,13 @@ class AnimScript {
         void colorizeChildren(bool i = true);                                        //315
         //void ins_316();                                                            //316
         //void ins_317();                                                            //317
-        void set_pos(float x, float y, float z);                                     //400
-        void set_rot(float x, float y, float z);                                     //401
-        void set_scale(float x, float y);                                            //402
-        void set_alpha(uint8_t a);                                                   //403
-        void set_color(uint8_t r, uint8_t g, uint8_t b);                             //404
-        void set_alpha2(uint8_t a);                                                  //405
-        void set_color2(uint8_t r, uint8_t g, uint8_t b);                            //406
+        AnimScript* set_pos(float x, float y, float z);                                     //400
+        AnimScript* set_rot(float x, float y, float z);                                     //401
+        AnimScript* set_scale(float x, float y);                                            //402
+        AnimScript* set_alpha(uint8_t a);                                                   //403
+        AnimScript* set_color(uint8_t r, uint8_t g, uint8_t b);                             //404
+        AnimScript* set_alpha2(uint8_t a);                                                  //405
+        AnimScript* set_color2(uint8_t r, uint8_t g, uint8_t b);                            //406
         void pos_time(uint16_t t, uint8_t mode, float x, float y, float z);          //407
         void color_time(uint16_t t, uint8_t mode, uint8_t r, uint8_t g, uint8_t b);  //408
         void alpha_time(uint16_t t, uint8_t mode, uint8_t a);                        //409
@@ -109,6 +109,7 @@ class AnimScript {
 
         void x_time(uint16_t t, uint8_t mode, float x);
         void y_time(uint16_t t, uint8_t mode, float y);
+        void y_time_ext(uint16_t t, uint8_t mode, float y, float e1, float e2);
         void z_time(uint16_t t, uint8_t mode, float z);
         float x_(bool p=false);
         float y_(bool p=false);
